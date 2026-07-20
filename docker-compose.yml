@@ -22,7 +22,6 @@ services:
       - --api.insecure=true
       - --accesslog=true
       - --accesslog.filepath=/var/log/traefik/access.log
-      - --accesslog.format=json
     volumes:
       - ./dynamic:/dynamic:ro
       - ./letsencrypt:/letsencrypt
