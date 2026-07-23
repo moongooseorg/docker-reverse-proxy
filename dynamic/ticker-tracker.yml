@@ -1,0 +1,17 @@
+http:
+  routers:
+    ticker-tracker:
+      rule: Host(`${DOMAIN}`) && PathPrefix(`/ticker-tracker`)
+      service: ticker-tracker
+      middlewares:
+        - ticker-tracker-stripprefix
+  middlewares:
+    ticker-tracker-stripprefix:
+      stripPrefix:
+        prefixes:
+          - /ticker-tracker
+  services:
+    ticker-tracker:
+      loadBalancer:
+        servers:
+          - url: http://192.168.1.12:8083
